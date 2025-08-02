@@ -28,7 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1  # Optimized: only fetch current commit
       - id: get_step
         run: |
           echo "current_step=$(cat ./.github/script/STEP)" >> $GITHUB_OUTPUT
@@ -54,10 +56,19 @@ jobs:
     steps:
       # We'll need to check out the repository so that we can edit the README
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Let's get all the branches
           ref: my-resume
+
+      # Cache git objects for faster subsequent operations
+      - name: Cache git objects
+        uses: actions/cache@v3
+        with:
+          path: .git/objects
+          key: ${{ runner.os }}-git-objects-${{ hashFiles('**/resume.md', '**/references.md') }}
+          restore-keys: |
+            ${{ runner.os }}-git-objects-
 
       # Update README to close <details id=2> and open <details id=3>
       # and set STEP to '3'
