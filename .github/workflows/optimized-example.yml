@@ -1,0 +1,86 @@
+name: Optimized Workflow Example
+
+# This is an example of how the workflows could be further optimized
+# by consolidating jobs and reducing redundancy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, my-resume]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  optimize_workflow:
+    name: Optimized workflow execution
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1  # Shallow clone for better performance
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cache git operations
+        uses: actions/cache@v4
+        with:
+          path: |
+            .git
+            ~/.gitconfig
+          key: ${{ runner.os }}-git-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-git-
+
+      - name: Performance monitoring
+        run: |
+          echo "workflow_start_time=$(date +%s)" >> $GITHUB_ENV
+          echo "::notice title=Workflow Started::$(date)"
+          
+      - name: Get current step (optimized)
+        id: get_step
+        run: |
+          current_step=$(cat ./.github/script/STEP)
+          echo "current_step=${current_step}" >> $GITHUB_OUTPUT
+          echo "::notice title=Current Step::${current_step}"
+
+      - name: Execute step-specific actions
+        run: |
+          step=${{ steps.get_step.outputs.current_step }}
+          echo "Executing actions for step: ${step}"
+          
+          case ${step} in
+            0)
+              echo "Setting up initial branch and conflict..."
+              # Consolidated step 0 logic here
+              ;;
+            1)
+              echo "Handling merge conflict resolution..."
+              # Consolidated step 1 logic here
+              ;;
+            2)
+              echo "Creating user conflict..."
+              # Consolidated step 2 logic here
+              ;;
+            3)
+              echo "Finalizing merge..."
+              # Consolidated step 3 logic here
+              ;;
+            *)
+              echo "Unknown step: ${step}"
+              exit 1
+              ;;
+          esac
+
+      - name: Performance summary
+        run: |
+          end_time=$(date +%s)
+          duration=$((end_time - workflow_start_time))
+          echo "::notice title=Workflow Performance::Completed in ${duration} seconds"
+          
+          # Optional: Send metrics to external service
+          # curl -X POST "https://metrics.example.com/workflows" \
+          #   -H "Content-Type: application/json" \
+          #   -d "{\"duration\": ${duration}, \"step\": \"${{ steps.get_step.outputs.current_step }}\"}"
