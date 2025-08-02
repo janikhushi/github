@@ -1,169 +1,148 @@
-<!--
-  <<< Author notes: Header of the course >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses Creative Commons Attribution 4.0 International.
--->
+# Elegant Fabrics - Premium Textiles Website
 
-# Resolve merge conflicts
+A modern, responsive website for a premium fabric and textiles company. This project showcases beautiful design, smooth animations, and comprehensive information about the company.
 
-_Learn why conflicts happen and how to resolve them._
+## 🌟 Features
 
-<!--
-  <<< Author notes: Start of the course >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
-  Each step should be wrapped in <details>/<summary>, with an `id` set.
-  The start <details> should have `open` as well.
-  Do not use quotes on the <details> tag attributes.
--->
+### Design & User Experience
+- **Modern, Elegant Design**: Clean and sophisticated layout with premium aesthetics
+- **Fully Responsive**: Optimized for all devices (desktop, tablet, mobile)
+- **Smooth Animations**: Subtle animations and transitions for enhanced user experience
+- **Interactive Elements**: Hover effects, scroll animations, and dynamic navigation
+- **Accessibility**: Keyboard navigation support and semantic HTML structure
 
-<details id=0 open>
-<summary><h2>Welcome</h2></summary>
+### Pages & Content
+- **Home Page**: Hero section with featured collections and call-to-action
+- **About Us Page**: Comprehensive company information including:
+  - Company story and history
+  - Core values and principles
+  - Team member profiles
+  - Commitment to customers
 
-Merge conflicts happen when two people make changes to the same file on GitHub—a common occurrence when you’re working with others. While resolving differences might involve some discussion, merge conflicts don’t have to be scary. This course guides you through the steps to finding the best merge conflict solution, so your team can keep building.
+### Technical Features
+- **Mobile-First Design**: Responsive navigation with hamburger menu
+- **Performance Optimized**: Debounced scroll events and efficient animations
+- **Cross-Browser Compatible**: Works on all modern browsers
+- **SEO Friendly**: Semantic HTML and proper meta tags
 
-- **Who is this for**: New developers, new GitHub users, users new to Git, students, managers, teams.
-- **What you'll learn**: What merge conflicts are, how you resolve merge conflicts, how to reduce merge conflicts.
-- **What you'll build**: We'll work with a short Markdown resume file in this course.
-- **Prerequisites**: We recommend taking [Introduction to GitHub](https://github.com/skills/introduction-to-github) prior to this course.
-- **How long**: This course is three steps long and takes less than 30 minutes to complete.
+## 📁 Project Structure
 
-## How to start this course
+```
+├── index.html          # Home page
+├── about.html          # About Us page
+├── styles.css          # Main stylesheet
+├── script.js           # JavaScript functionality
+└── README.md           # Project documentation
+```
 
-1. Right-click **Start course** and open the link in a new tab.
-   <br />[![start-course](https://user-images.githubusercontent.com/1221423/218596841-0645fe1a-4aaf-4f51-9ab3-8aa2d3fdd487.svg)](https://github.com/skills/resolve-merge-conflicts/generate)
-2. In the new tab, follow the prompts to create a new repository.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository—private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   ![Create a new repository](https://user-images.githubusercontent.com/1221423/218594143-e60462b6-9f2a-4fa3-80de-063ac5429aab.png)
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+## 🚀 Getting Started
 
-</details>
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- No additional dependencies required
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+### Installation
+1. Clone or download the project files
+2. Open `index.html` in your web browser
+3. Navigate through the website to explore all features
 
-<details id=1>
-<summary><h2>Step 1: Resolve a merge conflict</h2></summary>
+### Local Development
+For local development, you can use any local server:
 
-_Welcome to "Managing Merge Conflicts"! :wave:_
+```bash
+# Using Python 3
+python -m http.server 8000
 
-**What is a _merge conflict_?**: A **merge conflict** occurs when changes are made to the same part of the same file on two different branches. You usually find out about conflicts in a pull request.
+# Using Node.js (if you have http-server installed)
+npx http-server
 
-This can be intimidating, but have no fear, Git is smart when it comes to merging! Git only needs a human to decide how to [resolve the conflict](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line). Sometimes, the best way to resolve a merge conflict is to add content that's from both branches, or even something that isn't on either! This is why Git needs a human to look at the code and make the proper fixes.
+# Using PHP
+php -S localhost:8000
+```
 
-### :keyboard: Activity: Resolve a merge conflict
+Then visit `http://localhost:8000` in your browser.
 
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Open the pull request we made for you. We also made a conflict. Have no fear!
-1. At the bottom of the page, under "This branch has conflicts that must be resolved", click the **Resolve conflicts** button.
-1. Look for the highlighted sections that begins with  `<<<<<<<  my-resume` and ends with `>>>>>>> main`. These markers are added by Git to show you the content that is in conflict.
-1. Remove the changes made on the main branch by deleting all of the content below the `=======` and above `>>>>>>> main`.
-1. Next, remove the merge conflict markers by deleting the following lines:
-   ```
-   <<<<<<< my-resume
-   =======
-   >>>>>>> main
-   ```
-1. With the merge conflict markers removed, click **Mark as resolved**.
-1. Finally, click **Commit merge**.
-1. Wait about 20 seconds then refresh this page for the next step.
+## 🎨 Design System
 
-</details>
+### Color Palette
+- **Primary**: #667eea (Blue gradient)
+- **Secondary**: #e74c3c (Red accent)
+- **Text**: #2c3e50 (Dark blue)
+- **Background**: #f8f9fa (Light gray)
+- **White**: #ffffff
 
-<!--
-  <<< Author notes: Step 2 >>>
-  Start this step by acknowledging the previous step.
-  Define terms and link to docs.github.com.
--->
+### Typography
+- **Headings**: Playfair Display (serif)
+- **Body Text**: Inter (sans-serif)
+- **Font Weights**: 300, 400, 500, 600, 700
 
-<details id=2>
-<summary><h2>Step 2: Create your own conflict</h2></summary>
+### Components
+- **Navigation**: Fixed header with smooth transitions
+- **Cards**: Elevated design with hover effects
+- **Buttons**: Rounded corners with gradient backgrounds
+- **Sections**: Alternating backgrounds for visual separation
 
-_Good job! You've solved a merge conflict! :tada:_
+## 📱 Responsive Breakpoints
 
-Resolving a conflict doesn't automatically merge the pull request in GitHub. Instead, it stores the resolution of the conflict in a merge commit and allows you and your team to keep working. To resolve a conflict, GitHub performs what is known as a *reverse merge*. This means that the changes from the `main` branch were  merged into your `my-resume` branch. With a reverse merge, only the `my-resume` branch is updated. This allows you to test the resolved changes on your branch before you merge it into `main`.
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
 
-Now, let's get a little evil. (It's for educational purposes!)
+## 🔧 Customization
 
-### :keyboard: Activity: Create your own conflict
+### Adding New Pages
+1. Create a new HTML file following the existing structure
+2. Include the same navigation and footer
+3. Add your content within the `<main>` section
+4. Update navigation links as needed
 
-We went ahead and added a new file called `references.md` and pushed that change to `main`, without updating your `my-resume` branch.
+### Modifying Styles
+- Main styles are in `styles.css`
+- Use CSS custom properties for consistent theming
+- Follow the existing naming conventions
 
-1. Browse to the `my-resume` branch.
-1. Click the `Add file` dropdown menu and then on `Create new file`.
-1. Create a file named `references.md`.
-1. Enter some text that conflicts with what we added for `references.md` in the `main` branch.
-1. Scroll to the bottom of the page and enter a commit message for your change.
-1. Click the **Commit new file** button, making sure the "Commit directly to the `my-resume` branch" option is selected.
-1. Wait about 20 seconds then refresh this page for the next step.
+### Adding JavaScript Functionality
+- Main functionality is in `script.js`
+- Follow the existing event handling patterns
+- Use the debounce utility for performance optimization
 
-</details>
+## 🌐 Browser Support
 
-<!--
-  <<< Author notes: Step 3 >>>
-  Start this step by acknowledging the previous step.
-  Define terms and link to docs.github.com.
--->
+- Chrome 60+
+- Firefox 55+
+- Safari 12+
+- Edge 79+
 
-<details id=3>
-<summary><h2>Step 3: Merge your pull request</h2></summary>
+## 📄 License
 
-_Almost there! :heart:_
+This project is open source and available under the [MIT License](LICENSE).
 
-You can now [merge](https://docs.github.com/en/get-started/quickstart/github-glossary#merge) your pull request!
+## 🤝 Contributing
 
-### :keyboard: Activity: Merge your pull request
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test across different browsers and devices
+5. Submit a pull request
 
-1. First, resolve any remaining conflicts in your pull request.
-   > Look back at step one if you need help.
-1. Click **Merge pull request**.
-1. Delete the branch `my-resume` (optional).
-1. Wait about 20 seconds then refresh this page for the next step.
+## 📞 Contact
 
-</details>
+For questions or support:
+- Email: info@elegantfabrics.com
+- Phone: +1 (555) 123-4567
+- Address: 123 Fabric Street, Textile City
 
-<!--
-  <<< Author notes: Finish >>>
-  Review what we learned, ask for feedback, provide next steps.
--->
+## 🚀 Future Enhancements
 
-<details id=X>
-<summary><h2>Finish</h2></summary>
-
-_Congratulations friend, you've completed this course!_
-
-<img src=https://octodex.github.com/images/benevocats.jpg alt=celebrate width=300 align=right>
-
-Here's a recap of all the tasks you've accomplished in your repository:
-
-- You learned why merge conflicts happen.
-- You resolved a simple merge conflict.
-- You created a merge conflict, and resolved it!
-
-### What's next?
-
-- Make your own Markdown resume site with GitHub Pages! Learn how in our [GitHub Pages](https://github.com/skills/github-pages) course.
-- We'd love to hear what you thought of this course [in our discussion board](https://github.com/skills/.github/discussions).
-- [Take another GitHub Skills course](https://github.com/skills).
-- [Read the GitHub Getting Started docs](https://docs.github.com/en/get-started).
-- To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
-
-</details>
-
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+- Product catalog with filtering
+- Shopping cart functionality
+- Customer testimonials section
+- Blog/News section
+- Contact form with validation
+- Image gallery for fabric samples
+- Multi-language support
+- Dark mode toggle
 
 ---
 
-Get help: [Post in our discussion board](https://github.com/skills/.github/discussions) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2022 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [CC-BY-4.0 License](https://creativecommons.org/licenses/by/4.0/legalcode)
+**Built with ❤️ for the textile industry**
