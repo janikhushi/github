@@ -1,0 +1,63 @@
+# Reusable workflow template with performance optimizations
+# This template can be used by other workflows to reduce duplication and improve performance
+
+name: Reusable Workflow Template
+
+on:
+  workflow_call:
+    inputs:
+      step_number:
+        required: true
+        type: string
+      branch_name:
+        required: false
+        type: string
+        default: 'main'
+    secrets:
+      token:
+        required: true
+
+jobs:
+  get_current_step:
+    name: Check current step number
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (Optimized)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Only fetch current commit for better performance
+      - id: get_step
+        run: |
+          echo "current_step=$(cat ./.github/script/STEP)" >> $GITHUB_OUTPUT
+    outputs:
+      current_step: ${{ steps.get_step.outputs.current_step }}
+
+  execute_step:
+    name: Execute step ${{ inputs.step_number }}
+    needs: get_current_step
+    runs-on: ubuntu-latest
+    
+    # Only run if we're on the correct step
+    if: needs.get_current_step.outputs.current_step == inputs.step_number
+    
+    steps:
+      - name: Checkout (Optimized)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Only fetch current commit for better performance
+          ref: ${{ inputs.branch_name }}
+      
+      # Add your step-specific logic here
+      - name: Execute step logic
+        run: |
+          echo "Executing step ${{ inputs.step_number }}"
+          # Add your step-specific commands here
+      
+      # Update to next step
+      - name: Update to next step
+        uses: skills/action-update-step@v1
+        with:
+          token: ${{ secrets.token }}
+          from_step: ${{ inputs.step_number }}
+          to_step: ${{ inputs.next_step }}
+          branch_name: ${{ inputs.branch_name }}

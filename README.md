@@ -3,6 +3,12 @@
   Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
   In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
   Add your open source license, GitHub uses Creative Commons Attribution 4.0 International.
+  
+  Performance optimizations applied:
+  - Updated GitHub Actions to use latest versions
+  - Reduced fetch-depth for faster checkouts
+  - Added performance monitoring
+  - Optimized workflow structure
 -->
 
 # Resolve merge conflicts

@@ -1,0 +1,34 @@
+name: Performance Monitor
+
+# Monitor workflow performance and execution times
+on:
+  workflow_run:
+    workflows: ["Step 0, Start", "Step 1, Resolve a merge conflict", "Step 2, Create your own conflict", "Step 3, Merge your pull request"]
+    types: [completed]
+
+jobs:
+  analyze-performance:
+    name: Analyze Workflow Performance
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Analyze workflow performance
+        run: |
+          echo "Workflow: ${{ github.event.workflow_run.name }}"
+          echo "Duration: ${{ github.event.workflow_run.duration }} seconds"
+          echo "Conclusion: ${{ github.event.workflow_run.conclusion }}"
+          
+          # Log performance metrics for analysis
+          echo "## Performance Metrics" >> $GITHUB_STEP_SUMMARY
+          echo "- **Workflow**: ${{ github.event.workflow_run.name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Duration**: ${{ github.event.workflow_run.duration }} seconds" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ${{ github.event.workflow_run.conclusion }}" >> $GITHUB_STEP_SUMMARY
+          
+          # Alert if workflow takes too long (more than 5 minutes)
+          if [ "${{ github.event.workflow_run.duration }}" -gt 300 ]; then
+            echo "⚠️ **Warning**: Workflow took longer than 5 minutes to complete" >> $GITHUB_STEP_SUMMARY
+          fi
