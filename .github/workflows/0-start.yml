@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - id: get_step
         run: |
           echo "current_step=$(cat ./.github/script/STEP)" >> $GITHUB_OUTPUT
@@ -54,9 +54,25 @@ jobs:
     steps:
       # We'll need to check out the repository so that we can edit the README
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Let's get all the branches
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cache git operations
+        uses: actions/cache@v4
+        with:
+          path: |
+            .git
+            ~/.gitconfig
+          key: ${{ runner.os }}-git-${{ hashFiles('**/.git/HEAD') }}
+          restore-keys: |
+            ${{ runner.os }}-git-
+
+      - name: Performance monitoring start
+        run: |
+          echo "workflow_start_time=$(date +%s)" >> $GITHUB_ENV
+          echo "::notice title=Workflow Started::$(date)"
 
       - name: Prepare a branch, pull request, and merge conflict
         run: |
@@ -109,3 +125,10 @@ jobs:
           from_step: 0
           to_step: 1
           branch_name: my-resume
+
+      - name: Performance monitoring end
+        run: |
+          end_time=$(date +%s)
+          duration=$((end_time - workflow_start_time))
+          echo "::notice title=Workflow Duration::${duration} seconds"
+          echo "::set-output name=duration::${duration}"
